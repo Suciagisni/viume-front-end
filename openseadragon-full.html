@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <script src="/openseadragon/js/openseadragon.min.js"></script>
+    <script src="/openseadragon/js/openseadragon-annotorious.min.js"></script>
+    <script src="/openseadragon/js/FileSaver.min.js"></script>
+    <script src="/openseadragon/js/openseadragonScreenshot.js"></script>
+    <script src="/openseadragon/js/openseadragon-scalebar.js"></script>
+    <script src="/openseadragon/js/openseadragon-filtering.js"></script>
+    <script src="/openseadragon/js/caman/caman.full.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious-selector-pack@latest/dist/annotorious-selector-pack.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious-tilted-box@latest/dist/annotorious-tilted-box.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious-better-polygon@latest/dist/annotorious-better-polygon.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious-toolbar@latest/dist/annotorious-toolbar.min.js"></script>
+
+    <link rel="stylesheet" href="/openseadragon/css/annotorious.min.css" />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f9fafb;
+      }
+
+      .a9s-annotation .a9s-inner{
+        stroke-width: 1;
+        stroke: green;
+      }
+
+      .abnormal .a9s-inner,
+      .abnormal {
+        stroke-width: 1;
+        stroke: red;
+      }
+
+      .normal .a9s-inner,
+      .normal {
+        stroke-width: 1;
+        stroke: blue;
+      }
+
+      .a9s-annotation label {
+        transform: translateY(-100%) translateX(-1px);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        color: #1bc50f;
+
+        border-width: 2px 2px 0 2px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+      }
+
+      .a9s-annotation.normal label {
+        background-color: blue;
+        border-color: darkblue;
+      }
+
+      .a9s-annotation.abnormal label {
+        background-color: red;
+        border-color: darkred;
+      }
+
+      .a9s-annotation.selected label {
+        color: black;
+        background-color: yellow; /* You can adjust this color to match your design */
+        border-color: darkorange; /* You can adjust this color to match your design */
+      }
+
+      .a9s-annotation foreignObject {
+        overflow: visible;
+        width: 1px;
+        height: 1px;
+      }
+
+      .a9s-annotation foreignObject label {
+        display: inline-block;
+        padding: 3px 8px;
+      }
+
+      .tagselector-widget button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .tagselector-widget button.selected {
+        background-color: #28a745;
+      }
+
+      .tagselector-widget button:hover {
+        background-color: #0056b3;
+      }
+
+      .button {
+        background-color: #1f3ad7;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        cursor: pointer;
+        max-height: 35px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .ai-button {
+        border: none;
+        background-color: transparent;
+      }
+
+      .button:hover {
+        background-color: #2980b9; /* Change background color on hover */
+      }
+
+      #my-toolbar-container {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: transparent;
+        z-index: 1000;
+      }
+
+      #span-toolbar {
+        float: right;
+        margin: 0 10px 0 0;
+      }
+
+      #openseadragon-viewer {
+        background-color: #f9fafb;
+      }
+
+      @media screen and (max-width: 768px) {
+
+        #span-toolbar {
+          float: center;
+          display: block;
+          margin: 40px 0 0 0;
+        }
+      }
+    </style>
+  </head>
+  <body style="margin: 0; padding: 0; box-sizing: border-box">
+    <div id="openseadragon-viewer" style="width: 100%; height: 80vh">
+      <div id="my-toolbar-container">
+        <span  id="span-toolbar" > </span>
+      </div>
+    </div>
+    <script src="openseadragon/js/viume.js"></script>
+  </body>
+</html>
